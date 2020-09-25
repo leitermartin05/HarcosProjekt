@@ -64,16 +64,32 @@ namespace HarcosProjekt
             }
             else
             {
-                string utolsoHarcos;
-                masikHarcos.Eletero -= this.Eletero;
+                string utolsoHarcos; //utolsó támadó harcos
+                masikHarcos.Eletero -= this.Sebzes;
                 masikHarcos.Tapasztalat += 5;
                 utolsoHarcos = this.Nev;
                 while (!(this.Eletero==0||masikHarcos.Eletero==0))
                 {
                     if (utolsoHarcos==this.Nev)
                     {
-                       
+                        this.Eletero -= masikHarcos.Sebzes;
+                        this.Tapasztalat += 5;
+                        utolsoHarcos = masikHarcos.Nev;
                     }
+                    else if (utolsoHarcos == masikHarcos.Nev)
+                    {
+                        masikHarcos.Eletero -= this.Sebzes;
+                        masikHarcos.Tapasztalat += 5;
+                        utolsoHarcos = this.Nev;
+                    }
+                }
+                if (this.Eletero<=0)
+                {
+                    masikHarcos.Tapasztalat += 10;
+                }
+                else if (masikHarcos.Eletero<=0)
+                {
+                    this.Tapasztalat += 10;
                 }
             }
         }
