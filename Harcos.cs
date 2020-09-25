@@ -46,5 +46,10 @@ namespace HarcosProjekt
         public int Sebzes { get => alapSebzes + szint; }
         public int SzintLepeshez { get => 10 + szint * 5; }
         public int MaxEletero { get => alapEletero + szint * 3; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - LVL: {1} - EXP: {2} - HP: {3} - DMG: {4}", nev,szint,tapasztalat/SzintLepeshez,eletero/MaxEletero,Sebzes);
+        }
     }
 }
