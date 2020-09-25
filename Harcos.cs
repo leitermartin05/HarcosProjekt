@@ -38,9 +38,28 @@ namespace HarcosProjekt
         }
 
         public string Nev { get => nev; set => nev = value; }
-        public int Szint { get => szint; set => szint = value; }
-        public int Tapasztalat { get => tapasztalat; set => tapasztalat = value; }
-        public int Eletero { get => eletero; set => eletero = value; }
+        public int Szint
+        {
+            get => szint; 
+            set
+            {
+                if (Tapasztalat==SzintLepeshez)
+                {
+                    Tapasztalat -= SzintLepeshez;
+                    szint++;
+                    Eletero = MaxEletero;
+                }
+            } }
+        public int Tapasztalat
+        {
+            get => tapasztalat; set
+            {
+                if (Eletero==0)
+                {
+                    tapasztalat = 0;
+                }
+                else { tapasztalat = value; } } }
+        public int Eletero { get => eletero; set { if (Eletero > MaxEletero) { Eletero = MaxEletero; } else { eletero = value; } } }
         public int AlapEletero { get => alapEletero; }
         public int AlapSebzes { get => alapSebzes; }
         public int Sebzes { get => alapSebzes + szint; }
@@ -92,6 +111,18 @@ namespace HarcosProjekt
                     this.Tapasztalat += 10;
                 }
             }
+        }
+        public void Gyogyul()
+        {
+            if (Eletero==0)
+            {
+                Eletero = MaxEletero;
+            }
+            else
+            {
+                Eletero += 3 + Szint;
+            }
+
         }
     }
 }
