@@ -51,5 +51,31 @@ namespace HarcosProjekt
         {
             return string.Format("{0} - LVL: {1} - EXP: {2} - HP: {3} - DMG: {4}", nev,szint,tapasztalat/SzintLepeshez,eletero/MaxEletero,Sebzes);
         }
+
+        public void Megkuzd(Harcos masikHarcos)
+        {
+            if (this.nev==masikHarcos.nev)
+            {
+                Console.WriteLine("Hiba! Egyező harcos.");
+            }
+            else if (this.eletero==0||masikHarcos.eletero==0)
+            {
+                Console.WriteLine("Hiba! Az életerő 0.");
+            }
+            else
+            {
+                string utolsoHarcos;
+                masikHarcos.Eletero -= this.Eletero;
+                masikHarcos.Tapasztalat += 5;
+                utolsoHarcos = this.Nev;
+                while (!(this.Eletero==0||masikHarcos.Eletero==0))
+                {
+                    if (utolsoHarcos==this.Nev)
+                    {
+                       
+                    }
+                }
+            }
+        }
     }
 }
