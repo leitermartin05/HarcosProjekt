@@ -9,14 +9,24 @@ namespace HarcosProjekt
 {
     class Program
     {
-        StreamReader sr = new StreamReader("harcosok.csv");
-        List<Harcos> lista = new List<Harcos>();
+       
+        
         static void Main(string[] args)
         {
-            
+            Beolvas();
             
         }
 
-        
+        public static void Beolvas()
+
+        {
+            List<Harcos> lista = new List<Harcos>(); 
+            StreamReader sr = new StreamReader("harcosok.csv");
+            string sor = sr.ReadLine();
+            string[] tsor = sor.Split(';');
+            Harcos adatok = new Harcos(tsor[0], Convert.ToInt32(tsor[1]));
+            lista.Add(adatok);
+            sr.Close();
+        }
     }
 }
